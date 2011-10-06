@@ -1,0 +1,13 @@
+apply plugin: "eclipse"
+
+task npm(type: Exec) {
+    commandLine = ["npm", "install"]
+}
+
+task check(type: Exec) {
+    commandLine = ["node_modules/jshint/bin/hint", "src/main/nodejs", "--config", "src/resources/jshint.config.json"]
+}
+
+task test(type: Exec, dependsOn: check) {
+    commandLine = ["node_modules/jasmine-node/bin/jasmine-node", "--verbose", "--include", "src/main/nodejs", "src/test/nodejs"]
+}

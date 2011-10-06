@@ -1,0 +1,14 @@
+{
+  "name": "RoboZZle",
+  "version": "0.0.1",
+  "description": "A RoboZZle solution verification program",
+  "author": {
+    "name": "Daniel Rinehart",
+    "email": "danielr@neophi.com",
+    "url": "http://danielr.neophi.com"
+  },
+  "dependencies": {
+    "jshint": ">= 0.3.1",
+    "jasmine-node": ">= 1.0.11"
+  }
+}
