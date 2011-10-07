@@ -10,6 +10,13 @@ module.exports = (function() {
         "E" : "N"
     };
 
+    var rotateRightTable = {
+        "N" : "E",
+        "E" : "S",
+        "S" : "W",
+        "W" : "N"
+    };
+
     var setDirection = function(newDirection) {
         direction = newDirection;
         return that;
@@ -24,8 +31,14 @@ module.exports = (function() {
         return that;
     };
 
+    var rotateRight = function() {
+        setDirection(rotateRightTable[getDirection()]);
+        return that;
+    };
+    
     var commands = {
-        "L" : rotateLeft
+        "L" : rotateLeft,
+        "R" : rotateRight
     };
 
     var command = function(command) {
