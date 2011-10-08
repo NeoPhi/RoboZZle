@@ -1,29 +1,29 @@
 module.exports = (function() {
+    var direction = require("direction");
+    
     var that = {};
 
-    var direction;
+    var shipDirection;
 
-    var rotateLeftTable = {
-        "N" : "W",
-        "W" : "S",
-        "S" : "E",
-        "E" : "N"
-    };
+    var rotateLeftTable = {};
+    rotateLeftTable[direction.N] = direction.W;
+    rotateLeftTable[direction.W] = direction.S;
+    rotateLeftTable[direction.S] = direction.E;
+    rotateLeftTable[direction.E] = direction.N;
 
-    var rotateRightTable = {
-        "N" : "E",
-        "E" : "S",
-        "S" : "W",
-        "W" : "N"
-    };
+    var rotateRightTable = {};
+    rotateRightTable[direction.N] = direction.E;
+    rotateRightTable[direction.E] = direction.S;
+    rotateRightTable[direction.S] = direction.W;
+    rotateRightTable[direction.W] = direction.N;
 
     var setDirection = function(newDirection) {
-        direction = newDirection;
+        shipDirection = newDirection;
         return that;
     };
 
     var getDirection = function() {
-        return direction;
+        return shipDirection;
     };
 
     var rotateLeft = function() {
