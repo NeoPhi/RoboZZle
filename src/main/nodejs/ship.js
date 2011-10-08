@@ -12,17 +12,17 @@ module.exports = (function() {
         return direction;
     };
 
-    var rotateLeft = function() {
+    var rotateCounterclockwise = function() {
         return setDirection(getDirection().counterclockwise());
     };
 
-    var rotateRight = function() {
+    var rotateClockwise = function() {
         return setDirection(getDirection().clockwise());
     };
-    
+
     var commands = {
-        "L" : rotateLeft,
-        "R" : rotateRight
+        "L" : rotateCounterclockwise,
+        "R" : rotateClockwise
     };
 
     var command = function(command) {
