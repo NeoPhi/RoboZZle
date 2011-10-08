@@ -1,27 +1,23 @@
 module.exports = (function() {
-    var direction = require("direction");
-    
     var that = {};
 
-    var shipDirection;
+    var direction;
 
     var setDirection = function(newDirection) {
-        shipDirection = newDirection;
+        direction = newDirection;
         return that;
     };
 
     var getDirection = function() {
-        return shipDirection;
+        return direction;
     };
 
     var rotateLeft = function() {
-        setDirection(direction.counterclockwise[getDirection()]);
-        return that;
+        return setDirection(getDirection().counterclockwise());
     };
 
     var rotateRight = function() {
-        setDirection(direction.clockwise[getDirection()]);
-        return that;
+        return setDirection(getDirection().clockwise());
     };
     
     var commands = {
