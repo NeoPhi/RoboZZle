@@ -29,4 +29,10 @@ describe("Ship", function() {
             expect(ship.getDirection()).toEqual(direction.N.counterclockwise());
         });
     });
+    
+    describe("Command Forward", function() {
+       it("moves to a new space", function() {
+           ship.command(command.F);
+       });
+    });
 });
