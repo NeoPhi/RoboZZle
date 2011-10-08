@@ -1,4 +1,6 @@
 module.exports = (function() {
+    var command = require("command");
+
     var that = {};
 
     var direction;
@@ -12,26 +14,25 @@ module.exports = (function() {
         return direction;
     };
 
-    var rotateCounterclockwise = function() {
-        return setDirection(getDirection().counterclockwise());
-    };
-
     var rotateClockwise = function() {
         return setDirection(getDirection().clockwise());
     };
 
-    var commands = {
-        "L" : rotateCounterclockwise,
-        "R" : rotateClockwise
+    var rotateCounterclockwise = function() {
+        return setDirection(getDirection().counterclockwise());
     };
 
-    var command = function(command) {
+    var commands = {};
+    commands[command.CW] = rotateClockwise;
+    commands[command.CCW] = rotateCounterclockwise;
+
+    var commandRunner = function(command) {
         return commands[command]();
     };
 
     that.setDirection = setDirection;
     that.getDirection = getDirection;
-    that.command = command;
+    that.command = commandRunner;
 
     return that;
 }());
