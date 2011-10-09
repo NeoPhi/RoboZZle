@@ -9,7 +9,10 @@ describe("Function", function() {
     });
 
     it("has commands", function() {
-        f1.addCommand(command.F);
-        expect(f1.getCommand(0)).toEqual(command.F);
+        expect(f1.addCommand(command.F).getCommand(0)).toEqual(command.F);
+    });
+
+    it("doesn't blow up", function() {
+        expect(f1.getCommand(0)).toBeUndefined();
     });
 });
