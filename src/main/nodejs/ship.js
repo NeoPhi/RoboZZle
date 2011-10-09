@@ -4,6 +4,7 @@ module.exports = (function() {
     var that = {};
 
     var direction;
+    var position;
 
     var setDirection = function(newDirection) {
         direction = newDirection;
@@ -14,6 +15,15 @@ module.exports = (function() {
         return direction;
     };
 
+    var setPosition = function(newPosition) {
+        position = newPosition;
+        return that;
+    };
+
+    var getPosition = function() {
+        return position;
+    };
+
     var rotateClockwise = function() {
         return setDirection(getDirection().clockwise());
     };
@@ -22,9 +32,14 @@ module.exports = (function() {
         return setDirection(getDirection().counterclockwise());
     };
 
+    var moveForward = function() {
+        return setPosition(getPosition().getNeighbor(getDirection()));
+    };
+
     var commands = {};
     commands[command.CW] = rotateClockwise;
     commands[command.CCW] = rotateCounterclockwise;
+    commands[command.F] = moveForward;
 
     var commandRunner = function(command) {
         return commands[command]();
@@ -32,6 +47,8 @@ module.exports = (function() {
 
     that.setDirection = setDirection;
     that.getDirection = getDirection;
+    that.setPosition = setPosition;
+    that.getPosition = getPosition;
     that.command = commandRunner;
 
     return that;

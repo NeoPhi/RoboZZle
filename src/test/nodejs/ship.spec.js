@@ -1,15 +1,23 @@
 describe("Ship", function() {
     var command = require("command");
     var direction = require("direction");
+    var space = require("space");
+
     var ship;
     var shipDirection;
+    var shipPosition;
 
     beforeEach(function() {
         ship = require("ship");
+
         shipDirection = direction.N;
         ship.setDirection(shipDirection);
         spyOn(shipDirection, "clockwise");
         spyOn(shipDirection, "counterclockwise");
+
+        shipPosition = space();
+        ship.setPosition(shipPosition);
+        spyOn(shipPosition, "getNeighbor");
     });
 
     describe("Command Clockwise", function() {
@@ -29,10 +37,11 @@ describe("Ship", function() {
             expect(ship.getDirection()).toEqual(direction.N.counterclockwise());
         });
     });
-    
+
     describe("Command Forward", function() {
-       it("moves to a new space", function() {
-           ship.command(command.F);
-       });
+        it("moves to a new space", function() {
+            ship.command(command.F);
+            expect(shipPosition.getNeighbor).toHaveBeenCalledWith(direction.N);
+        });
     });
 });

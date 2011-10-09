@@ -3,13 +3,17 @@ var counterclockwise = {};
 
 var handler = function(direction) {
     var that = {};
-    
+
     that.clockwise = function() {
         return clockwise[direction];
     };
 
     that.counterclockwise = function() {
         return counterclockwise[direction];
+    };
+
+    that.toString = function() {
+        return direction;
     };
 
     return that;
