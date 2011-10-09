@@ -11,3 +11,8 @@ task check(type: Exec) {
 task test(type: Exec, dependsOn: check) {
     commandLine = ["node_modules/jasmine-node/bin/jasmine-node", "--verbose", "--include", "src/main/nodejs", "src/test/nodejs"]
 }
+
+task debug(type: Exec, dependsOn: check) {
+    environment = ["NODE_PATH": "src/main/nodejs"];
+    commandLine = ["node", "--debug-brk", "src/test/nodejs/debug.js"]
+}

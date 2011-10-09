@@ -1,4 +1,4 @@
-module.exports = function() {
+module.exports.create = function() {
     var that = {};
 
     var commands = [];

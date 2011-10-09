@@ -1,4 +1,4 @@
-module.exports = (function() {
+module.exports.create = function() {
     var command = require("command");
 
     var that = {};
@@ -52,4 +52,4 @@ module.exports = (function() {
     that.command = commandRunner;
 
     return that;
-}());
+};

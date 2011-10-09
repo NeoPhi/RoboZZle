@@ -5,7 +5,7 @@ describe("Function", function() {
     var f1;
 
     beforeEach(function() {
-        f1 = func();
+        f1 = func.create();
     });
 
     it("has commands", function() {

@@ -1,21 +1,22 @@
 describe("Program", function() {
     var func = require("func");
     var command = require("command");
+    var program = require("program");
 
-    var program;
+    var prg;
 
     beforeEach(function() {
-        program = require("program");
+        prg = program.create();
     });
 
     it("has functions", function() {
-        var f1 = func();
-        expect(program.addFunction(f1).getFunction(0)).toEqual(f1);
+        var f1 = func.create();
+        expect(prg.addFunction(f1).getFunction(0)).toEqual(f1);
     });
 
     it("can step", function() {
-        var f1 = func();
+        var f1 = func.create();
         f1.addCommand(command.F);
-        expect(program.nextStep()).toEqual(command.F);
+        expect(prg.addFunction(f1).nextStep()).toEqual(command.F);
     });
 });

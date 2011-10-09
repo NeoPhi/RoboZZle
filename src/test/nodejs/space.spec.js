@@ -6,8 +6,8 @@ describe("Sapce", function() {
     var b;
 
     beforeEach(function() {
-        a = space();
-        b = space();
+        a = space.create();
+        b = space.create();
     });
 
     it("knows thy neighbor", function() {
