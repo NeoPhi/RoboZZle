@@ -4,7 +4,11 @@ module.exports = (function() {
     var func = require("func");
 
     var functions = [];
-    functions[0] = func();
+
+    that.addFunction = function(func) {
+        functions.push(func);
+        return that;
+    };
 
     that.getFunction = function(index) {
         return functions[index];

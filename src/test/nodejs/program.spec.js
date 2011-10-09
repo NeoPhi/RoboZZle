@@ -9,6 +9,7 @@ describe("Program", function() {
     });
 
     it("has default function", function() {
-        expect(program.getFunction(0)).toBeDefined();
+        var f1 = func();
+        expect(program.addFunction(f1).getFunction(0)).toEqual(f1);
     });
 });
