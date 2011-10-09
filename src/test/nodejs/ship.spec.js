@@ -20,28 +20,16 @@ describe("Ship", function() {
         spyOn(shipPosition, "getNeighbor");
     });
 
-    describe("Command Clockwise", function() {
-        it("calls direction.clockwise", function() {
-            ship.command(command.CW);
-            expect(shipDirection.clockwise).toHaveBeenCalled();
-            expect(shipDirection.counterclockwise).not.toHaveBeenCalled();
-            expect(ship.getDirection()).toEqual(direction.N.clockwise());
-        });
+    it("Command clockwise delegates to direction", function() {
+        ship.command(command.CW);
+        expect(shipDirection.clockwise).toHaveBeenCalled();
     });
-
-    describe("Command Counterclockwise", function() {
-        it("calls direction.counterclockwise", function() {
-            ship.command(command.CCW);
-            expect(shipDirection.clockwise).not.toHaveBeenCalled();
-            expect(shipDirection.counterclockwise).toHaveBeenCalled();
-            expect(ship.getDirection()).toEqual(direction.N.counterclockwise());
-        });
+    it("Command counterclockwise delegates to direction", function() {
+        ship.command(command.CCW);
+        expect(shipDirection.counterclockwise).toHaveBeenCalled();
     });
-
-    describe("Command Forward", function() {
-        it("moves to a new space", function() {
-            ship.command(command.F);
-            expect(shipPosition.getNeighbor).toHaveBeenCalledWith(direction.N);
-        });
+    it("Command forward moves to a new space", function() {
+        ship.command(command.F);
+        expect(shipPosition.getNeighbor).toHaveBeenCalledWith(direction.N);
     });
 });
