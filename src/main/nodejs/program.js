@@ -20,10 +20,6 @@ module.exports.create = function() {
 
     that.nextStep = function() {
         currentCommand++;
-        console.log("function " + currentFunction);
-        console.log("command " + currentCommand);
-        console.log("function " + getFunction(currentFunction));
-        console.log("command " + getFunction(currentFunction).getCommand(currentCommand));
         return getFunction(currentFunction).getCommand(currentCommand);
     };
 
