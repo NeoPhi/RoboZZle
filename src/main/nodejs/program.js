@@ -1,7 +1,7 @@
 module.exports.create = function() {
     var that = {};
 
-    var func = require("func");
+    var command = require("command");
 
     var functions = [];
     var currentFunction = 0;
@@ -19,8 +19,17 @@ module.exports.create = function() {
     that.getFunction = getFunction;
 
     that.nextStep = function() {
-        currentCommand++;
-        return getFunction(currentFunction).getCommand(currentCommand);
+        var nextCommand;
+        while (!nextCommand) {
+            currentCommand++;
+            nextCommand = getFunction(currentFunction).getCommand(currentCommand);
+            if (nextCommand === command.F1) {
+                currentFunction = 0;
+                currentCommand = -1;
+                nextCommand = null;
+            }
+        }
+        return nextCommand;
     };
 
     return that;
