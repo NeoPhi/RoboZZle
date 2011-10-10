@@ -23,9 +23,10 @@ describe("Program", function() {
     it("can loop", function() {
         var f1 = func.create();
         f1.addCommand(command.F);
+        f1.addCommand(command.CW);
         f1.addCommand(command.F1);
         expect(prg.addFunction(f1).nextStep()).toEqual(command.F);
-        expect(prg.nextStep()).toEqual(command.F1);
+        expect(prg.nextStep()).toEqual(command.CW);
         expect(prg.nextStep()).toEqual(command.F);
     });
 });
