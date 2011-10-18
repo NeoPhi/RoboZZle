@@ -34,6 +34,7 @@ describe("Program", function() {
         var f1 = func.create();
         f1.addCommand(command.F2);
         f1.addCommand(command.CW);
+        prg.addFunction(f1);
         var f2 = func.create();
         f2.addCommand(command.F);
         prg.addFunction(f2);
