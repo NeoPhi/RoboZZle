@@ -1,41 +1,5 @@
-var direction = require("direction");
-
 module.exports.create = function() {
     var that = {};
-
-    var ship;
-    var program;
-
-    function findStars() {
-        var stars = [];
-        var visited = [];
-        var spaces = [];
-        function visit(space) {
-            if (!space || space.visited) {
-                return;
-            }
-            space.visited = true;
-            spaces.push(space);
-            var star = space.getStar();
-            if (star && !star.added) {
-                star.added = true;
-                stars.push(star);
-            }
-            visit(space.getNeighbor(direction.N));
-            visit(space.getNeighbor(direction.E));
-            visit(space.getNeighbor(direction.S));
-            visit(space.getNeighbor(direction.W));
-        }
-        visit(ship.getPosition());
-        var i;
-        for (i = 0; i < stars.length; i++) {
-            delete stars[i].added;
-        }
-        for (i = 0; i < spaces.length; i++) {
-            delete spaces[i].visited;
-        }
-        return stars;
-    }
 
     function unvisitedStarCount(stars) {
         var count = 0;
@@ -47,18 +11,7 @@ module.exports.create = function() {
         return count;
     }
 
-    that.setShip = function(newShip) {
-        ship = newShip;
-        return that;
-    };
-
-    that.setProgram = function(newProgram) {
-        program = newProgram;
-        return that;
-    };
-
-    that.validate = function() {
-        var stars = findStars();
+    that.validate = function(stars, ship, program) {
         while (true) {
             if (unvisitedStarCount(stars) === 0) {
                 return true;
