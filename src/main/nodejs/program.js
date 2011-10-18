@@ -31,16 +31,12 @@ module.exports.create = function() {
                 var oldState = stack.pop();
                 currentFunction = oldState.currentFunction;
                 currentCommand = oldState.currentCommand;
-            } else if ((nextCommand === command.F1) || (nextCommand === command.F2)) {
+            } else if (nextCommand.isFunction()) {
                 stack.push({
                     currentFunction : currentFunction,
                     currentCommand : currentCommand
                 });
-                if (nextCommand === command.F1) {
-                    currentFunction = 0;
-                } else {
-                    currentFunction = 1;
-                }
+                currentFunction = nextCommand.number() - 1;
                 currentCommand = -1;
                 nextCommand = null;
             }
