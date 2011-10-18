@@ -18,6 +18,7 @@ describe("Program", function() {
         var f1 = func.create();
         f1.addCommand(command.F);
         expect(prg.addFunction(f1).nextStep()).toEqual(command.F);
+        expect(prg.nextStep()).toBeUndefined();
     });
 
     it("can loop", function() {
@@ -40,5 +41,6 @@ describe("Program", function() {
         prg.addFunction(f2);
         expect(prg.nextStep()).toEqual(command.F);
         expect(prg.nextStep()).toEqual(command.CW);
+        expect(prg.nextStep()).toBeUndefined();
     });
 });
