@@ -1,6 +1,7 @@
 describe("Sapce", function() {
     var space = require("space");
     var direction = require("direction");
+    var star = require("star");
 
     var a;
     var b;
@@ -19,5 +20,10 @@ describe("Sapce", function() {
         a.setNeighbor(direction.N, b);
         b.setNeighbor(direction.E, a);
         expect(a.getNeighbor(direction.N).getNeighbor(direction.E)).toEqual(a);
+    });
+
+    it("can have a star", function() {
+        var aStar = star.create();
+        expect(a.setStar(aStar).getStar()).toEqual(aStar);
     });
 });
