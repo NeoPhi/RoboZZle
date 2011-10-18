@@ -1,8 +1,6 @@
 module.exports.create = function() {
     var that = {};
 
-    var command = require("command");
-
     var functions = [];
     var currentFunction = 0;
     var currentCommand = -1;

@@ -1,6 +1,6 @@
-module.exports.create = function() {
-    var command = require("command");
+var command = require("command");
 
+module.exports.create = function() {
     var that = {};
 
     var direction;
