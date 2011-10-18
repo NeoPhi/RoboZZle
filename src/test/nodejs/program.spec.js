@@ -29,4 +29,15 @@ describe("Program", function() {
         expect(prg.nextStep()).toEqual(command.CW);
         expect(prg.nextStep()).toEqual(command.F);
     });
+
+    it("can stack", function() {
+        var f1 = func.create();
+        f1.addCommand(command.F2);
+        f1.addCommand(command.CW);
+        var f2 = func.create();
+        f2.addCommand(command.F);
+        prg.addFunction(f2);
+        expect(prg.nextStep()).toEqual(command.F);
+        expect(prg.nextStep()).toEqual(command.CW);
+    });
 });

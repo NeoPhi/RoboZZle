@@ -23,6 +23,9 @@ module.exports.create = function() {
         while (!nextCommand) {
             currentCommand++;
             nextCommand = getFunction(currentFunction).getCommand(currentCommand);
+            if (!nextCommand) {
+                return nextCommand;
+            }
             if (nextCommand === command.F1) {
                 currentFunction = 0;
                 currentCommand = -1;
