@@ -6,6 +6,7 @@ module.exports.create = function() {
     var functions = [];
     var currentFunction = 0;
     var currentCommand = -1;
+    var stack = [];
 
     var getFunction = function(index) {
         return functions[index];
@@ -24,10 +25,22 @@ module.exports.create = function() {
             currentCommand++;
             nextCommand = getFunction(currentFunction).getCommand(currentCommand);
             if (!nextCommand) {
-                return nextCommand;
-            }
-            if (nextCommand === command.F1) {
-                currentFunction = 0;
+                if (stack.length === 0) {
+                    return nextCommand;
+                }
+                var oldState = stack.pop();
+                currentFunction = oldState.currentFunction;
+                currentCommand = oldState.currentCommand;
+            } else if ((nextCommand === command.F1) || (nextCommand === command.F2)) {
+                stack.push({
+                    currentFunction : currentFunction,
+                    currentCommand : currentCommand
+                });
+                if (nextCommand === command.F1) {
+                    currentFunction = 0;
+                } else {
+                    currentFunction = 1;
+                }
                 currentCommand = -1;
                 nextCommand = null;
             }
