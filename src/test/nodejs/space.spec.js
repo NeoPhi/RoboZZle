@@ -26,4 +26,8 @@ describe("Sapce", function() {
         var aStar = star.create();
         expect(a.setStar(aStar).getStar()).toEqual(aStar);
     });
+
+    it("visits its star when you visit it", function() {
+        expect(a.setStar(star.create()).visit().getStar().isVisited()).toBeTruthy();
+    });
 });

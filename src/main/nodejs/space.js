@@ -22,5 +22,12 @@ module.exports.create = function() {
         return star;
     };
 
+    that.visit = function() {
+        if (star) {
+            star.visit();
+        }
+        return that;
+    };
+
     return that;
 };

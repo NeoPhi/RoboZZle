@@ -42,7 +42,11 @@ module.exports.create = function() {
     commands[command.F] = moveForward;
 
     var commandRunner = function(command) {
-        return commands[command]();
+        commands[command]();
+        if (getPosition()) {
+            getPosition().visit();
+        }
+        return that;
     };
 
     that.setDirection = setDirection;
